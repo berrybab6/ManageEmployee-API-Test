@@ -10,7 +10,9 @@ router.get('/',async(req,res)=>{
         res.json(emp)
         console.log('Get Request')
     }catch(err){
-        res.send("Error", err)
+        // res.send("Error")
+        res.status(400).json({ message: err.message })
+
     }
     
 })
@@ -21,7 +23,7 @@ router.get('/:id',async(req,res)=>{
         const emp = await EmployeeSchema.findById(req.params.id)
         res.json(emp)
     }catch(err){
-        res.send("Error", err)
+        res.status(500).send(err)
     }
     
 })
@@ -44,12 +46,7 @@ router.post('/', async(req, res)=>{
     const emp1 = await emp.save()
         res.json(emp1)
     }
-    // try{
-    //     const emp1 = await emp.save()
-    //     res.json(emp1)
-    // }catch(err){
-    //     res.send("Error", err)
-    // } 
+  
 })
 })
 
