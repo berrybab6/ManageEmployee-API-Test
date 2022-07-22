@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const url = "mongodb://localhost:27017/EmployeeDB"
 
 const app = express();
+
+const port = process.env.PORT || 4000;
 mongoose.connect(url,{
     useNewUrlParser:true
 })
@@ -15,8 +17,8 @@ app.use(express.json());
 
 const empRouter = require('./src/routers/employee')
 app.use('',empRouter)
-app.listen(9000, ()=>{
-    console.log(`Employee CRUD API listening for request at ${3000}`)
+app.listen(port, ()=>{
+    console.log(`Employee CRUD API listening for request at ${port}`)
 })
 
 
