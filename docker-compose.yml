@@ -17,14 +17,14 @@ services:
     image: mish/employee-crud-api-app:dev
     build: 
       context: .
-      target: dev
+      # target: dev
     container_name: employee-crud-api-app
     restart: always
     volumes: 
       - .:/app
     ports:
       - "5000:5000"
-      - "3000:3000"
+      # - "3000:3000"
     depends_on:
       - employee-crud-api-db
     environment:
@@ -34,8 +34,8 @@ services:
 
 volumes: 
   employee-crud-api-db:
-    - employee-crud-api-db
+    # - employee-crud-api-db
 
 networks: 
   employee-crud-api-network:
-    - employee-crud-api-network
+    # - employee-crud-api-network
