@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config()
 
 // const url = "mongodb://localhost:27017/EmployeeDB"
 
