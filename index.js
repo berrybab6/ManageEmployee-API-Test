@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config()
+const cors = require('cors');
 
 // const url = "mongodb://localhost:27017/EmployeeDB"
 
@@ -12,8 +13,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/EmployeeDB`);
 
 app.use(bodyParser.json());
-
-const PORT = process.env.PORT || 5000;
+app.use(cors({
+    origin: '*'
+}));
+const PORT = process.env.PORT || 5001;
 
 // const conn = mongoose.connection
 
@@ -34,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
   
   }
 
-app.listen(PORT, ()=>{
+app.listen(PORT,"0.0.0.0", ()=>{
     console.log(`Employee CRUD API listening for request at ${PORT}`)
 })
 

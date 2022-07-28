@@ -80,6 +80,7 @@ router.delete('/:id',async(req,res)=>{
         res.status(204).send({message:"Employee has been deleted.."})
     }catch(err){
         res.status(500).json({message: err.message})
+        console.log("Wrong ID")
     }
     
 })

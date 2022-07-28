@@ -1,35 +1,9 @@
-# PROD CONFIG
-FROM node:16.15.1-alpine as prod
-
+FROM alpine:latest
+RUN apk add --no-cache nodejs npm
 WORKDIR /app
-
-COPY package*.json ./
-
+COPY . /app
+COPY package.json /app
 RUN npm install
-
-WORKDIR /app/client
-
-COPY ./client/package*.json ./
-
-RUN npm install
-
-WORKDIR /app
-
-COPY . .
-
-ENV NODE_ENV=production
-
-CMD [ "npm", "start" ]
-
-# DEV CONFIG
-FROM prod as dev
-
-EXPOSE 5000 3000
-
-ENV NODE_ENV=development
-
-RUN npm install -g nodemon
-
-RUN npm install --only=dev
-
-CMD [ "npm", "run", "dev" ]
+COPY . /app
+EXPOSE 5000
+CMD ["npm", "start"]
