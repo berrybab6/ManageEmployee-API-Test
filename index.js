@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const app = express();
 var corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: '*',
     optionsSuccessStatus: 200 ,
     methods: "GET, PUT,POST,PATCH,DELETE"// For legacy browser support
 }
@@ -20,9 +20,9 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/EmployeeDB`);
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: '*'
-}));
+// app.use(cors({
+    // origin: '*'
+// }));
 const PORT = process.env.PORT || 9000;
 
 // const conn = mongoose.connection
