@@ -10,28 +10,30 @@ require('dotenv').config()
 // const url = "mongodb://localhost:27017/EmployeeDB"
 
 const app = express();
-var corsOptions = {
-    origin: "*",
-    methods: "PATCH,GET,OPTIONS,HEAD,PUT,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 200   // For legacy browser support
-}
+// var corsOptions = {
+//     origin: "*",
+//     methods: "PATCH,GET,OPTIONS,HEAD,PUT,POST,DELETE",
+//     preflightContinue: false,
+//     optionsSuccessStatus: 200   // For legacy browser support
+// }
 
 // app.use(cors(corsOptions))
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin','*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin','*');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     res.header('Access-Control-Allow-Credentials', true);
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH');
+//     next();
+//   });
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/EmployeeDB`);
 
 app.use(bodyParser.json());
-// app.use(cors({
-    // origin: '*'
-// }));
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+
+}));
 const PORT = process.env.PORT || 9000;
 
 // const conn = mongoose.connection
