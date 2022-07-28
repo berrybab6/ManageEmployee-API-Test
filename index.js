@@ -31,7 +31,9 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/EmployeeD
 app.use(bodyParser.json());
 app.use(cors({
     origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    preflightContinue: true,
+
 
 }));
 const PORT = process.env.PORT || 9000;
