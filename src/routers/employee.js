@@ -30,7 +30,7 @@ router.get('/:id',async(req,res)=>{
 
 // Create Employee Data
 router.post('/', async(req, res)=>{
-    await EmployeeSchema.findOne({name:req.body.name}, async function(err, employee){
+    await EmployeeSchema.findOneAndReplace({name:req.body.name}, async function(err, employee){
         if(err) console.log(err);
         if ( employee){
             res.json("This Employee already been saved");
