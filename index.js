@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
   
   }
 
-app.listen(PORT,"0.0.0.0", ()=>{
+app.listen(PORT, ()=>{
     console.log(`Employee CRUD API listening for request at ${PORT}`)
 })
 
