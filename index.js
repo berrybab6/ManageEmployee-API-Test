@@ -11,9 +11,10 @@ require('dotenv').config()
 
 const app = express();
 var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 ,
-    methods: "GET, PUT,POST,PATCH,DELETE"// For legacy browser support
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204   // For legacy browser support
 }
 
 app.use(cors(corsOptions))
