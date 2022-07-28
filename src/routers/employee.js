@@ -30,11 +30,11 @@ router.get('/:id',async(req,res)=>{
 
 // Create Employee Data
 router.post('/', async(req, res)=>{
-    await EmployeeSchema.findOneAndReplace({name:req.body.name}, async function(err, employee){
-        if(err) console.log(err);
-        if ( employee){
-            res.json("This Employee already been saved");
-        } else{
+    // await EmployeeSchema.findOneAndReplace({name:req.body.name}, async function(err, employee){
+    //     if(err) console.log(err);
+    //     if ( employee){
+    //         res.json("This Employee already been saved");
+    //     } else{
     const emp = new EmployeeSchema(
         {
             name:req.body.name,
@@ -47,8 +47,8 @@ router.post('/', async(req, res)=>{
         res.json(emp1)
     }
   
-})
-})
+// })}
+)
 
 // Update Employee Data 
 router.patch('/:id',async(req,res)=>{
