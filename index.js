@@ -43,8 +43,9 @@ if (process.env.NODE_ENV === 'production') {
     })
   
   }
+  const server = http.createServer(app);
 
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
     console.log(`Employee CRUD API listening for request at ${PORT}`)
 })
 
