@@ -36,7 +36,7 @@ const corsOptions = {
 // app.options('*', cors(corsOptions)); 
 app.use(cors({
     origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    methods: ['GET','POST','DELETE','HEAD','PUT','PATCH'],
     preflightContinue: true,
     "Access-Control-Max-Age": 86400
 
