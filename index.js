@@ -33,14 +33,15 @@ const corsOptions = {
     origin: true,
     credentials: true
   }
-app.options('*', cors(corsOptions)); 
-// app.use(cors({
-//     origin: '*',
-//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-//     preflightContinue: true,
+// app.options('*', cors(corsOptions)); 
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+    preflightContinue: true,
+    "Access-Control-Max-Age": 86400
 
 
-// }));
+}));
 const PORT = process.env.PORT || 9000;
 
 // const conn = mongoose.connection
