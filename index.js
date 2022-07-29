@@ -29,13 +29,18 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost:27017/EmployeeDB`);
 
 app.use(bodyParser.json());
-app.use(cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
-    preflightContinue: true,
+const corsOptions = {
+    origin: true,
+    credentials: true
+  }
+app.options('*', cors(corsOptions)); 
+// app.use(cors({
+//     origin: '*',
+//     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH'],
+//     preflightContinue: true,
 
 
-}));
+// }));
 const PORT = process.env.PORT || 9000;
 
 // const conn = mongoose.connection
